@@ -1,0 +1,52 @@
+<% include ./partials/header %>
+
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('https://cdn.pixabay.com/photo/2018/07/08/01/44/mountains-3523153_1280.jpg')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="site-heading">
+          <h1>Clean Blog</h1>
+          <span class="subheading">A Blog Theme by Start Bootstrap</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+  <% data.forEach((d)=>{ %>
+  <div class="row">
+    <div class="col-lg-3 mx-auto">
+      <img class="img-thumbnail" src="<%= d.image %>" alt="">
+    </div>
+    <div class="col-lg-9 mx-auto">
+      <div class="post-preview">
+        <a href="post.html">
+          <h2 class="post-title">
+            <%=  d.postTitle %>
+          </h2>
+          <h3 class="post-subtitle">
+              <%=  d.postSubTitle %>
+          </h3>
+        </a>
+        <p class="post-meta">Posted by
+          <a href="#">Start Bootstrap</a>
+          on September 24, 2018</p>
+      </div>
+      <hr>
+    </div>
+  </div>
+  <% }) %>
+  <!-- Pager -->
+  <div class="clearfix">
+    <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+  </div>
+</div>
+</div>
+
+<hr>
+
+<% include ./partials/footer %>
