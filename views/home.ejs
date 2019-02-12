@@ -17,24 +17,24 @@
 
 <!-- Main Content -->
 <div class="container">
-  <% data.forEach((d)=>{ %>
+  <% foundBlogs.forEach((blog)=>{ %>
   <div class="row">
     <div class="col-lg-3 mx-auto">
-      <img class="img-thumbnail" src="<%= d.image %>" alt="">
+      <img class="img-thumbnail" src="<%= blog.comImage %>" alt="">
     </div>
     <div class="col-lg-9 mx-auto">
       <div class="post-preview">
-        <a href="post.html">
+        <a href="/blogs/<%= blog._id %>">
           <h2 class="post-title">
-            <%=  d.postTitle %>
+            <%=  blog.title %>
           </h2>
           <h3 class="post-subtitle">
-              <%=  d.postSubTitle %>
+              <%=  blog.comSentences %>
           </h3>
         </a>
         <p class="post-meta">Posted by
           <a href="#">Start Bootstrap</a>
-          on September 24, 2018</p>
+          on <%= blog.date %></p>
       </div>
       <hr>
     </div>

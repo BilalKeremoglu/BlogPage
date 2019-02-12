@@ -1,0 +1,71 @@
+<% include ../partials/header %>
+<script src="https://cdn.ckeditor.com/4.11.2/standard/ckeditor.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('#myButton').click(function(){
+            var blogTitle = $("#blogTitle").val(),
+                comSentence = $("#comSentence").val(),
+                comImage = $("#comImage").val(),
+                blog = CKEDITOR.instances.myTextArea.getData();
+
+                var data = {
+                    blogTitle:blogTitle,
+                    comSentence:comSentence,
+                    comImage:comImage,
+                    blog:blog
+                }
+
+                //ajax request
+                $.post('newPost',{data:data})
+                    .then((addedBlog)=>{
+                        console.log(addedBlog);
+                    });
+        });
+    });
+</script>
+
+<!-- Page Header -->
+<header class="masthead"
+    style="background-image: url('https://cdn.pixabay.com/photo/2018/07/08/01/44/mountains-3523153_1280.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>Clean Blog</h1>
+                    <span class="subheading">A Blog Theme by Start Bootstrap</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container" style="width:40%">
+    <h1 style="text-align:center">Add a new post</h1>
+    <h4 style="text-align:center; color:grey; font-family: 'Courier New', Courier, monospace;">Only For Admins</h4>
+    <form >
+        <div class="form-group">
+            <label for="blogTitle">Blog Title</label>
+            <input type="text" class="form-control" id="blogTitle" aria-describedby="titleHelp"
+                placeholder="Enter Title" name="blogTitle">
+            <small id="titleHelp" class="form-text text-muted">Blog başlığını yazınız.</small>
+        </div>
+        <div class="form-group">
+            <label for="comSentence">Blog Commertial Sentences</label>
+            <input type="text" class="form-control" id="comSentence" placeholder="comSentence" name="comSentence">
+        </div>
+        <div class="form-group">
+            <label for="comImage">Blog Commertial İmage</label>
+            <input type="text" class="form-control" id="comImage" placeholder="comImage" name="comImage">
+        </div>
+        <textarea name="editor" id="myTextArea"></textarea>
+        <script>
+            CKEDITOR.replace('editor');
+        </script>
+        <button class="btn btn-primary" id="myButton">Submit</button>
+    </form>
+</div>
+
+
+<% include ../partials/footer %>

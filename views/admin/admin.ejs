@@ -1,0 +1,43 @@
+<% include ../partials/header %>
+
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('https://cdn.pixabay.com/photo/2018/07/08/01/44/mountains-3523153_1280.jpg')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="site-heading">
+          <h1>Admin Dasboard</h1>
+          <span class="subheading">A Blog Theme by Start Bootstrap</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+  <% adminActions.forEach((a)=>{ %>
+  <div class="row">
+    <div class="col-lg-4 mx-auto">
+      <button id="<%= a.actionId %>" type="button" onclick="catchId(this.id)" class="btn btn-outline-primary btn-block">
+        <%= a.displayName %></button>
+    </div>
+  </div>
+  <% }) %>
+</div>
+
+<script>
+  function catchId(clicked_id) {
+    alert("clicked" + clicked_id);
+    
+    if(clicked_id == 1){
+      window.location.href='changeHomeImage'; return false;
+    }else if(clicked_id == 4){
+      window.location.href='newPost'; return false;
+    }
+  }
+</script>
+
+
+<% include ../partials/footer %>

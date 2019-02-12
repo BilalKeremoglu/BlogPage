@@ -1,7 +1,8 @@
 const express = require('express'),
+    Blog = require('../models/blogModel'),
     router = express.Router();
 
-let data = [
+/* let data = [
     {
         postTitle:"Birinci Başlık",
         postSubTitle:"Birincinin Alt Başlığı",
@@ -17,10 +18,18 @@ let data = [
         postSubTitle:"Üçüncünün Alt Başlığı",
         image:"https://cdn.pixabay.com/photo/2018/12/04/22/38/road-3856796_1280.jpg"
     }
-]
+] */
 
 router.get('/', (req, res) => {
-    res.render('home',{data : data});
+    Blog.find()
+    .then((foundBlogs)=>{
+        res.render('home',{foundBlogs:foundBlogs});
+
+    }).catch((err)=>{
+        console.log("==============HATA VAR============");
+        console.log(err);
+        res.send(err);
+    })
 });
 
 router.get('/about', (req, res) => {
