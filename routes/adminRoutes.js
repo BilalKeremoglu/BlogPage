@@ -27,7 +27,7 @@ router.post('/signin', passport.authenticate('local',
 router.get('/signup',isLoggedIn, (req, res) => {
     res.render('admin/signup');
 });
-
+//deneme
 //signup
 router.post('/signup',isLoggedIn, (req, res) => {
     const newUser = new User({ username: req.body.username });
